@@ -33,4 +33,4 @@ openssl ca -config openssl.cnf -in /home/server/req.pem -out /home/server/cert.p
 
 # Create a key store that will contain our certificate.
 cd /home/server
-openssl pkcs12 -export -out keycert.p12 -in cert.pem -inkey key.pem -passout pass:roboconf
+openssl pkcs12 -export -out keycert.p12 -in cert.pem -inkey key.pem -passout pass:soho1234

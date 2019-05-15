@@ -19,7 +19,10 @@ openssl ca -config openssl.cnf -in /home/client/req.pem -out /home/client/cert.p
 
 # Create a key store that will contain our certificate.
 cd /home/client
-openssl pkcs12 -export -out key-store.p12 -in cert.pem -inkey key.pem -passout pass:roboconf
+openssl pkcs12 -export -out key-store.p12 -in cert.pem -inkey key.pem -passout pass:soho1234
 
 # Create a trust store that will contain the certificate of our CA.
-openssl pkcs12 -export -out trust-store.p12 -in /home/testca/cacert.pem -inkey /home/testca/private/cakey.pem -passout pass:roboconf
+openssl pkcs12 -export -out trust-store.p12 -in /home/testca/cacert.pem -inkey /home/testca/private/cakey.pem -passout pass:soho1234
+
+
+
