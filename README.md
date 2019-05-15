@@ -27,7 +27,7 @@ The generated image contains SSL certificates for the server side.
 ```
 mkdir -p /tmp/docker-test \
 	&& rm -rf /tmp/docker-test/* \
-	&& docker run -d --rm -p 12000:5671 -v /tmp/docker-test:/home/client rabbitmq-with-ssl:latest
+        && docker run -d --rm -p 12000:5671 -p 12001:5672 -p 12002:15672 -p 12003:8883 -p 12004:1883 -v /tmp/docker-test:/home/client --name myrbmqtt rabbitmq-with-ssl:latest
 ```
 
 Here, we bind the port 5671 from the container on the 12000 port on the local host.  
