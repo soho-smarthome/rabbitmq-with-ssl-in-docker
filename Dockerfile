@@ -29,5 +29,6 @@ ENV V_HOST int
 ADD init.sh /init.sh
 RUN ["chmod", "+x", "/init.sh"]
 
-CMD /bin/bash /home/generate-client-keys.sh && rabbitmq-server && /bin/bash /init.sh
+#CMD /bin/bash /home/generate-client-keys.sh && rabbitmq-server && sleep 60 && /bin/bash /init.sh
+CMD /bin/bash /home/generate-client-keys.sh && /bin/bash /init.sh
 #sleep infinity
