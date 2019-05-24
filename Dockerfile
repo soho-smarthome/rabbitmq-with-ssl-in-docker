@@ -1,9 +1,10 @@
-FROM rabbitmq:3.6.16
+#FROM rabbitmq:3.6.16
 #FROM rabbitmq:3.6.6-management
-#FROM rabbitmq:3.6.6-management-alpine
-
-RUN apt-get update \
-	&& apt-get install openssl -y  \ 
+FROM rabbitmq:3.6.6-management-alpine
+#FROM rabbitmq:3.6.6
+RUN apk update && apk add ca-certificates \
+        #&& apt-get update \
+	&& apk add openssl \ 
 	&& mkdir -p /home/testca/certs \
 	&& mkdir -p /home/testca/private \
 	&& chmod 700 /home/testca/private \
@@ -18,9 +19,9 @@ COPY prepare-server.sh generate-client-keys.sh /home/
 RUN mkdir -p /home/server \
 	&& mkdir -p /home/client \
 	&& chmod +x /home/prepare-server.sh /home/generate-client-keys.sh
-
-RUN /bin/bash /home/prepare-server.sh \
-	&& /etc/init.d/rabbitmq-server restart
+RUN /home/prepare-server.sh 
+	#&& rabbitmq-server restart
+         #&& /usr/lib/rabbitmq/bin/rabbitmq-server start
 
 # Define environment variables.
 ENV RABBITMQ_USER admin
